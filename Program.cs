@@ -13,6 +13,7 @@ namespace Hangman
             int guessPlayer = 1;
             int wordPlayer = 2;
             string master;
+            string alphabet = "abcdefghijklmnopqrstuvwxyz";
             string guess;
             bool done = false;
             while (!done)
@@ -24,36 +25,17 @@ namespace Hangman
                     Console.WriteLine(" ");
                 }
                 guess = master;
-                guess = guess.Replace("a", "*");
-                guess = guess.Replace("b", "*");
-                guess = guess.Replace("c", "*");
-                guess = guess.Replace("d", "*");
-                guess = guess.Replace("e", "*");
-                guess = guess.Replace("f", "*");
-                guess = guess.Replace("g", "*");
-                guess = guess.Replace("h", "*");
-                guess = guess.Replace("i", "*");
-                guess = guess.Replace("j", "*");
-                guess = guess.Replace("k", "*");
-                guess = guess.Replace("l", "*");
-                guess = guess.Replace("m", "*");
-                guess = guess.Replace("n", "*");
-                guess = guess.Replace("o", "*");
-                guess = guess.Replace("p", "*");
-                guess = guess.Replace("q", "*");
-                guess = guess.Replace("r", "*");
-                guess = guess.Replace("s", "*");
-                guess = guess.Replace("t", "*");
-                guess = guess.Replace("u", "*");
-                guess = guess.Replace("v", "*");
-                guess = guess.Replace("w", "*");
-                guess = guess.Replace("x", "*");
-                guess = guess.Replace("y", "*");
-                guess = guess.Replace("z", "*");
+                for (int i = 0; i != master.Length; i++)
+                {
+                     if(alphabet.Contains(master[i]))
+                    {
+                        guess = guess.Replace(master[i], '*');
+                    }
+                }
                 int characters = 0;
                 for (int i = 0; i != guess.Length; i++)
                 {
-                    if(guess[i] == "*".ToCharArray()[0])
+                    if (guess[i] == '*')
                     {
                         characters++;
                     }
