@@ -27,7 +27,7 @@ namespace Hangman
                 guess = master;
                 for (int i = 0; i != master.Length; i++)
                 {
-                     if(alphabet.Contains(master[i]))
+                    if (alphabet.Contains(master[i]))
                     {
                         guess = guess.Replace(master[i], '*');
                     }
@@ -79,11 +79,19 @@ namespace Hangman
                     }
                     else
                     {
-                        if (!badLetters.Contains(letter))
+                        bool solveAttempt = false;
+                        if (!badLetters.Contains(letter) || letter.Length == master.Length)
                         {
+                            if(letter.Length == master.Length)
+                            {
+                                solveAttempt = true;
+                            }
                             Console.WriteLine("NOPE!");
                             miss--;
-                            badLetters += (" " + letter);
+                            if (solveAttempt == false)
+                            {
+                                badLetters += (" " + letter);
+                            }
                             switch (miss)
                             {
                                 case 5:
