@@ -80,48 +80,59 @@ namespace Hangman
                     else
                     {
                         bool solveAttempt = false;
+                        bool typo = false;
                         if (!badLetters.Contains(letter) || letter.Length == master.Length)
                         {
-                            if(letter.Length == master.Length)
+                            if (letter.Length == master.Length)
                             {
                                 solveAttempt = true;
                             }
-                            Console.WriteLine("NOPE!");
-                            miss--;
                             if (solveAttempt == false)
                             {
-                                badLetters += (" " + letter);
+                                if (letter.Length == 1)
+                                {
+                                    badLetters += (" " + letter);
+                                    Console.WriteLine("NOPE!");
+                                    miss--;
+                                }
+                                else
+                                {
+                                    typo = true;
+                                }
                             }
-                            switch (miss)
+                            if (!typo)
                             {
-                                case 5:
-                                    Console.WriteLine("   O");
-                                    break;
-                                case 4:
-                                    Console.WriteLine("   O");
-                                    Console.WriteLine("   |");
-                                    Console.WriteLine("   |");
-                                    break;
-                                case 3:
-                                    Console.WriteLine("   O");
-                                    Console.WriteLine("   |");
-                                    Console.WriteLine("   |");
-                                    Console.WriteLine("  /");
-                                    break;
-                                case 2:
-                                    Console.WriteLine("   O");
-                                    Console.WriteLine("   |");
-                                    Console.WriteLine("   |");
-                                    Console.WriteLine("  / \\");
-                                    break;
-                                case 1:
-                                    Console.WriteLine("   O");
-                                    Console.WriteLine("  \\|");
-                                    Console.WriteLine("   |");
-                                    Console.WriteLine("  / \\");
-                                    break;
-                                default:
-                                    break;
+                                switch (miss)
+                                {
+                                    case 5:
+                                        Console.WriteLine("   O");
+                                        break;
+                                    case 4:
+                                        Console.WriteLine("   O");
+                                        Console.WriteLine("   |");
+                                        Console.WriteLine("   |");
+                                        break;
+                                    case 3:
+                                        Console.WriteLine("   O");
+                                        Console.WriteLine("   |");
+                                        Console.WriteLine("   |");
+                                        Console.WriteLine("  /");
+                                        break;
+                                    case 2:
+                                        Console.WriteLine("   O");
+                                        Console.WriteLine("   |");
+                                        Console.WriteLine("   |");
+                                        Console.WriteLine("  / \\");
+                                        break;
+                                    case 1:
+                                        Console.WriteLine("   O");
+                                        Console.WriteLine("  \\|");
+                                        Console.WriteLine("   |");
+                                        Console.WriteLine("  / \\");
+                                        break;
+                                    default:
+                                        break;
+                                }
                             }
                         }
                         if (miss != 0)
