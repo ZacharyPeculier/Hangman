@@ -12,6 +12,8 @@ namespace Hangman
         {
             int guessPlayer = 1;
             int wordPlayer = 2;
+            int player1Score = 0;
+            int player2Score = 0;
             string master;
             string alphabet = "abcdefghijklmnopqrstuvwxyz";
             string guess;
@@ -148,7 +150,17 @@ namespace Hangman
                 if (win)
                 {
                     Console.WriteLine("Yep! The word was " + master + ".");
-                    Console.WriteLine("Player " + guessPlayer + " wins!");
+                    if(guessPlayer == 1)
+                    {
+                        player1Score++;
+                    }
+                    else
+                    {
+                        player2Score++;
+                    }
+                    Console.WriteLine("Score: ");
+                    Console.WriteLine("Player 1:  " + player1Score);
+                    Console.WriteLine("Player 2:  " + player2Score);
                 }
                 else
                 {
@@ -184,7 +196,17 @@ namespace Hangman
                     Console.Beep(349, 500);
                     Console.Beep(466, 2000);
                     Console.WriteLine("The word was " + master + ".");
-                    Console.WriteLine("Player " + wordPlayer + " wins!");
+                    if(wordPlayer == 1)
+                    {
+                        player1Score++;
+                    }
+                    else
+                    {
+                        player2Score++;
+                    }
+                    Console.WriteLine("Score: ");
+                    Console.WriteLine("Player 1:  " + player1Score);
+                    Console.WriteLine("Player 2:  " + player2Score);
                 }
                 bool good = false;
                 while (!good)
@@ -210,6 +232,18 @@ namespace Hangman
                     {
                         done = true;
                         good = true;
+                        if(player1Score > player2Score )
+                        {
+                            Console.WriteLine("Player 1 wins!");
+                        }
+                        else if (player2Score > player1Score)
+                        {
+                            Console.WriteLine("Player 2 wins!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("It's a tie!");
+                        }
                     }
                 }
             }
