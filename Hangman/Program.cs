@@ -20,7 +20,7 @@ namespace Hangman
             bool done = false;
             while (!done)
             {
-                Console.WriteLine("Player " + wordPlayer + ", pick a word. Make sure that player " + guessPlayer + " isn't looking!");
+                Console.WriteLine("Player " + wordPlayer + ", pick a word or phrase. Make sure that player " + guessPlayer + " isn't looking!");
                 master = Console.ReadLine().ToLower();
                 for (int i = 0; i != 1000; i++)
                 {
@@ -42,7 +42,7 @@ namespace Hangman
                         characters++;
                     }
                 }
-                Console.WriteLine("Alright player " + guessPlayer + ". The word you need to guess has " + characters + " letters in it.");
+                Console.WriteLine("Alright player " + guessPlayer + ". The secret phrase you need to guess has " + characters + " letters in it that you must guess!.");
                 bool gameEnd = false;
                 bool win = false;
                 string badLetters = "";
@@ -149,7 +149,7 @@ namespace Hangman
                 }
                 if (win)
                 {
-                    Console.WriteLine("Yep! The word was " + master + ".");
+                    Console.WriteLine("Yep! The phrase was " + master + ".");
                     if(guessPlayer == 1)
                     {
                         player1Score++;
